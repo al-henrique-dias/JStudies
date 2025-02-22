@@ -25,3 +25,19 @@ document.getElementById("ex1").textContent = `My name is ${fullName}`;
 document.getElementById("ex2").textContent = `I am ${age} years old`;
 document.getElementById("ex3").textContent = `Online: ${online}`;
 
+/*
+ * tip for arithmetic operators: you can make exponents with x**y (x to the power of y)
+ * it also works as operand assignment x **= y (x gets x to the power of y)
+ * exponents are also priority for equations (over multiplications, divisions and modulo, but parenthesis beats all)
+*/
+
+//user input (browser prompts and page elements)
+let username;
+//username = window.prompt("What's your username?"); console.log(username);//goes over page, like alert. window prompts also always return Strings.
+document.getElementById("submitUser").onclick = function(){//functions can return their content as events, no return keyword needed (also, this function is nameless, function is a keyword)
+    //onclick is an element event that fires when the element is clicked upon (mouse left)
+    username = document.getElementById("username").value;//value is the element's content
+    console.log(`new user detected: ${username}`);
+    document.getElementById("title").textContent = `Hello ${username}`;
+}
+
