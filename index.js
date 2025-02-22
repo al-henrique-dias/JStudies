@@ -41,3 +41,14 @@ document.getElementById("submitUser").onclick = function(){//functions can retur
     document.getElementById("title").textContent = `Hello ${username}`;
 }
 
+//type conversion (test it)
+let x;
+x = Number(x);//NaN means Not a Number
+console.log(x, typeof x);
+let y;
+y = String(y);
+console.log(y, typeof y);
+let z;
+z = Boolean(z);//returns true: it has content or it's true, false: has no content or it's false
+console.log(z, typeof z);
+
