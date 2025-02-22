@@ -63,3 +63,24 @@ document.getElementById("submitRadius").onclick = () => {//nameless functions ca
     document.getElementById("circumference").textContent = `This circle circumference is ${c}\n`;
 }
 
+//a page that counts
+const more = document.getElementById("more");
+const reset = document.getElementById("reset");
+const less = document.getElementById("less");
+const counter = document.getElementById("counter");
+
+let count = 0;
+
+more.onclick = () => {
+    count++;
+    counter.textContent = count;
+}
+reset.onclick = () => {
+    count = 0;
+    counter.textContent = count;
+}
+less.onclick = () => {
+    count--;
+    counter.textContent = count;
+}
+

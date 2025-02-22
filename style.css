@@ -2,3 +2,25 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1em;
 }
+#btnContainer{
+    text-align: center;
+}
+#counter{
+    display: block;
+    text-align: center;
+    font-size: 7em;
+}
+.countBtn{
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: #ecd4e1;
+    background-color: #810826;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+.countBtn:hover{
+    color: white;
+    background-color: #bd850e;
+    border-color: #ffe3a8;
+}
