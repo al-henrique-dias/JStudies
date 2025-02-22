@@ -542,3 +542,37 @@ const password = generatePassword(
     includeSymbols
 );
 console.log(`Generated password: ${password}`);
+
+/**
+ * callback - a function that is passed as and argument to another function
+ * used to handle asynchronous operations such as:
+ * - reading a file
+ * - network requests
+ * - interactiong with databases
+ * 
+ * "Hey, when you're done, call this next."
+ */
+function hello(callback){
+    console.log("hello");
+    callback();//this garantees that other functions (callback) will be called only during or after this function (hello)
+}
+function wait(){
+    console.log("wait!");
+}
+function leave(){
+    console.log("please,leave");
+}
+function goodbye(){
+    console.log("goodbye");
+}
+hello(wait);
+
+function soma(callback, x, y){
+    let result = x + y;//do this first
+    callback(result);//then call this next with the
+}
+soma(console.log, 3, 5);//first calculated and then called the function that displayed
+function displayPage(result){
+    document.getElementById("myTitle").textContent = result;
+}
+soma(displayPage, 1, 2);
