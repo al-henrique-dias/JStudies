@@ -52,3 +52,49 @@
     </div>
     <hr><br>
 
+    <!--Age check-->
+    <label>Enter your age: </label>
+    <input id="ageInput">
+    <button id="ageSubmit">submit</button>
+    <br>
+    <p id="ageInspect"></p>
+    <hr><br>
+
+    <!--checkbox and radio buttons-->
+    <input type="checkbox" id="happyChecker">
+    <label for="happyChecker">be happy</label>
+    <br>
+    <p id="happyResult"></p>
+    <label for="happyRadio"></label>
+        <input type="radio" id="happyBtn" name="happyRadio">
+        <label for="happyBtn">happy</label>
+        <br>
+        <input type="radio" id="mehBtn" name="happyRadio">
+        <label for="mehBtn">meh</label>
+        <br>
+        <input type="radio" id="sadBtn" name="happyRadio">
+        <label for="sadBtn">sad</label>
+    <br>
+    <p id="moodResult"></p>
+    <button id="happySubmit">submit</button>
+    <hr><br>
+    
+    <!--temperature converter-->
+    <form>
+        <h1 style="color: hsl(192, 53%, 43%)">Temperature conversion:</h1>
+        <input type="number" id="tempInput" value="0" onclick="setTempType()" onselect="setTempType()">
+        <label id="tempType">ºC</label>
+        <br>
+        <input type="radio" id="toF" name="unit" onclick="setTempType()" checked>
+        <label for="toF" id="conversion">ºC → ºF</label>
+        <br>
+        <input type="radio" id="toC" name="unit" onclick="setTempType()">
+        <label for="toC" id="conversion">ºF → ºC</label>
+        <br>
+        <button id="convertBtn" type="button" onclick="convert()">convert</button>
+    </form>
+    <hr><br>
+
+    <script src="index.js"></script>
+</body>
+</html>

@@ -269,6 +269,7 @@ if(PI!=="3.14159")//not((same value? : true)^(same datatype : false)? : false) :
 else
     console.log("That is Pi");//so this is called
 
+/*commenting this bc it's annoying
 //some loops
 //while loop
 username = "";
@@ -323,5 +324,96 @@ do{
         }
     }
 }while(running)
+*/
 
+//functions
+function happyBirthday(username, age){
+    console.log(`
+        Happy birthday to you!\n
+        Happy birthday to you!\n
+        Happy birthday dear ${username}!\n
+        Happy birthday to you!\n
+        ${age} years old is 1 year older than last year!
+    `);
+}
+happyBirthday("Olata", 21);
+happyBirthday("Spongebob", 30);
+
+function add(x, y){
+    return x+y;
+}
+function subtract(x, y){
+    return x-y;
+}
+function multiply(x, y){
+    return x*y;
+}
+function divide(x, y){
+    return x/y;
+}
+console.log(add(2, 3));
+console.log(subtract(2, 3));
+console.log(multiply(2, 3));
+console.log(divide(2, 3));
+
+function isEven(number){
+    return (number % 2) === 0 ? true : false;
+}
+console.log(isEven(13));
+
+//variable scope (local vs global)
+let num = 3;//global
+function fn1(){
+    let x = 1;//local
+    console.log(x);
+    console.log(num);
+}
+fn1();
+function fn2(){
+    let x = 2;//local
+    let num = 4;//local variables have priority within their functions
+    console.log(x);
+    console.log(num);
+}
+fn2();
+
+//temperature converter
+const tempInput = document.getElementById("tempInput");
+const tempType = document.getElementById("tempType");
+const toFRadio = document.getElementById("toF");
+const toCRadio = document.getElementById("toC");
+let temp;
+
+function setTempType(){
+    switch(true){
+        case toFRadio.checked :
+            tempType.textContent = "ºC"
+            tempType.style = "color: blue";
+            break;
+        case toCRadio.checked :
+            tempType.textContent = "ºF"
+            tempType.style = "color: blue";
+            break;
+    }
+}
+function convert(){
+
+    switch(true){
+        case toFRadio.checked :
+            temp = Number(tempInput.value);
+            temp = ((temp * 9) / 5) + 32;
+            tempInput.value = Number(temp.toFixed(1));
+            tempType.textContent = "ºF";
+            tempType.style = "color: red";
+            break;
+        case toCRadio.checked :
+            temp = Number(tempInput.value);
+            temp = (temp - 32) * (5 / 9);
+            tempInput.value = Number(temp.toFixed(1));
+            tempType.textContent = "ºC"
+            tempType.style = "color: red";
+            break;
+    }
+
+}
 
