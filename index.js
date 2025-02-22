@@ -241,3 +241,31 @@ console.log(`${username.slice(0, 3)}\n${username.slice(3)}`);//String slicing (c
 username = " BroCodE  ";
 username = username.trim().charAt(0).toUpperCase() + username.trim().slice(1).toLocaleLowerCase();
 console.log(username);
+
+/**
+ * strict operator
+ * == comparison (compares values)
+ * === strict comparison (compares values and datatypes)
+ * != inequality operator
+ * !== strict inequality operator
+*/
+//const PI = 3.14159;
+//PI=="3.14159" -> same value? : true
+if(PI==="3.14159")//(same value? : true)^(same datatype? : false) : false
+    //overall it's false bc the datatypes are different
+    console.log("That is Pi");
+else
+    console.log("That's not Pi");//so this is called
+/**
+ * strict inequality operator is the negation of the strict equality operator
+ * so the following two lines give the same result:
+ * x !== y;
+ * !(x===y)
+ */
+//PI!="3.14159" -> not(same value? : true) : false
+if(PI!=="3.14159")//not((same value? : true)^(same datatype : false)? : false) : true
+    //overall it's true bc the datatypes are different
+    console.log("That's not Pi");
+else
+    console.log("That is Pi");//so this is called
+
