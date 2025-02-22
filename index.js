@@ -84,3 +84,34 @@ less.onclick = () => {
     counter.textContent = count;
 }
 
+//Math object
+console.log(Math.PI);
+x = 3.83;
+y = 2;
+z = -1;
+console.log(Math.round(x));//rounds to nearest
+console.log(Math.floor(x));//rounds to low
+console.log(Math.ceil(x));//rounds to high
+console.log(Math.trunc(x));//removes decimals
+console.log(Math.pow(x, y));//x to the power of y
+console.log(Math.sqrt(x));//square root
+console.log(Math.log(x));//logarithm
+console.log(Math.sin(x));//sin
+console.log(Math.cos(x));//cosin
+console.log(Math.tan(x));//tangent
+console.log(Math.abs(z));//absolute/modulus (no positive or negative)
+console.log(Math.max(x, y, z));//maximum value
+console.log(Math.min(x, y, z));//minimum value
+console.log(Math.random());//pseudo-random double value between 0 (inclusive) and 1 (exclusive)
+
+//Random Number Generator
+const max = 20;
+const min = 1;
+console.log(Math.floor(Math.random()*(max-min))+min);//with the next formula, you can chage the minimum and maximum random values
+const randBtn = document.getElementById("randBtn");
+const randNum = document.getElementById("randNum");
+
+randBtn.onclick = () => {
+    randNum.textContent = Math.round(Math.random()*(max-min))+min;
+}
+

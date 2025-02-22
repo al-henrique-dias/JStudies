@@ -24,3 +24,18 @@ body{
     background-color: #bd850e;
     border-color: #ffe3a8;
 }
+#randNum{
+    display: block;
+    text-align: center;
+    font-size: 7em;
+}
+#randBtn{
+    font-size: 3em;
+    padding: 5px 25px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+#randBtn:hover{
+    color: white;
+    background-color: grey;
+}
