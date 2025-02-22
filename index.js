@@ -417,3 +417,34 @@ function convert(){
 
 }
 
+//arrays (work like array lists here)
+let fruits = ["apple", "orange", "banana"];
+//displaying array
+console.log(fruits);//all items (displayed as an object)
+console.log(fruits[0]);//first index starts on 0
+console.log(fruits[1]);
+console.log(fruits[2]);
+console.log(fruits[3]);//all elements past the last index are undefined
+//or
+for(let i = 0; i < fruits.length; i++){
+    console.log(fruits[i]);
+}
+//or
+for(let fruit of fruits){
+    console.log(fruit);
+}
+//array methods
+console.log(fruits.length);//array total length
+console.log(fruits.indexOf("banana"));//index of an element (returns -1 if element doesn't exist)
+fruits.push("coconut")//adds element to next array index
+console.log(fruits);
+fruits.pop();//removes element from last array index
+console.log(fruits);
+fruits.unshift("mango");//adds element to first array index and moves onward the following ones
+console.log(fruits);
+fruits.shift();//removes element from first array index and moves backward the following ones
+console.log(fruits);
+fruits.sort();//sorts elements in ascending order
+console.log(fruits);
+fruits.reverse();//reverses array elements
+console.log(fruits);
