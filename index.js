@@ -103,7 +103,6 @@ console.log(Math.abs(z));//absolute/modulus (no positive or negative)
 console.log(Math.max(x, y, z));//maximum value
 console.log(Math.min(x, y, z));//minimum value
 console.log(Math.random());//pseudo-random double value between 0 (inclusive) and 1 (exclusive)
-
 //Random Number Generator
 const max = 20;
 const min = 1;
@@ -114,4 +113,107 @@ const randNum = document.getElementById("randNum");
 randBtn.onclick = () => {
     randNum.textContent = Math.round(Math.random()*(max-min))+min;
 }
+
+//if statements
+const ageInput = document.getElementById("ageInput");
+const ageSubmit = document.getElementById("ageSubmit");
+const ageInspector = document.getElementById("ageInspect");
+
+ageSubmit.onclick = () => {
+    if(ageInput.value>=18){
+        ageInspector.textContent = "Feel free to browse";
+        console.log("YOU ARE OLD");
+    }else if(ageInput.value<0){
+        ageInspector.textContent = "Invalid age";
+        console.log("WHAT?");
+    }else if(ageInput.value==""){
+        ageInspector.textContent = "Please, enter your age"
+        console.log("nothing here");
+    }else{
+        ageInspector.textContent = "Sorry, I can't give credit, come back when you're a little\n...\nOLDER";
+        console.log("WHAT A BABY");
+    }
+}
+//verify checked state of HTML checkbox or radio button
+const happyChecker = document.getElementById("happyChecker");
+const happyBtn = document.getElementById("happyBtn");
+const mehBtn = document.getElementById("mehBtn");
+const sadBtn = document.getElementById("sadBtn");
+const happySubmit = document.getElementById("happySubmit");
+const happyResult = document.getElementById("happyResult");
+const moodResult = document.getElementById("moodResult");
+
+happySubmit.onclick = () => {
+    if(happyChecker.checked)//.checked returns a true statement if the box is checked
+        happyResult.textContent = "Heck yeah! Let's be happy!";
+    else
+        happyResult.textContent = "Oh, please! Let's be happy, check the button above!";
+    if(happyBtn.checked)//for radio, you check on every button
+        moodResult.textContent = "Go on with happiness!";
+    else if(mehBtn.checked)
+        moodResult.textContent = "You're almost there! Don't give up!";
+    else if(sadBtn.checked)
+        moodResult.textContent = "Don't worry, be happy!";
+    else
+        moodResult.textContent = "So, how does it make you feel?"
+}
+
+/**
+ * ternary operator
+ * assign a value based on a condition:
+ * condition ? codeIfTrue : codeIfFalse;
+ * asking "isThisTrue ? ifYesThen : ifNoThen;"
+ */
+age = 21;
+console.log(age >= 18 ? "You're an adult" : "You're a minor");
+
+//switch
+let day = 1;
+
+switch(day){//here it verifies cases where values are equal to the scope variable attributed value
+    case 1 :
+        console.log("It is sunday");
+        break;//when a case is true, it will cascade execute all the other cases, break prevents that by exiting the iteration
+    case 2 :
+        console.log("It is monday");
+        break;
+    case 3 :
+        console.log("It is tuesday");
+        break;
+    case 4 :
+        console.log("It is wednesday");
+        break;
+    case 5 :
+        console.log("It is thursday");
+        break;
+    case 6 :
+        console.log("It is friday");
+        break;
+    case 7 :
+        console.log("It is saturday");
+        break;
+    default ://if no case is true, default is executed
+        console.log(`${day} it's not a day`);
+}
+
+let testScore = 92;
+let letterGrade;
+
+switch(true){//here it verifies if the case condition matches to the scope logic
+    case testScore >= 90 :
+        letterGrade = 'A';
+        break;
+    case testScore >= 80 :
+        letterGrade = 'B';
+        break;
+    case testScore >= 70 :
+        letterGrade = 'C';
+        break;
+    case testScore >= 60 :
+        letterGrade = 'D';
+        break;
+    default :
+        letterGrade = 'F';
+}
+console.log(letterGrade);
 
