@@ -269,3 +269,59 @@ if(PI!=="3.14159")//not((same value? : true)^(same datatype : false)? : false) :
 else
     console.log("That is Pi");//so this is called
 
+//some loops
+//while loop
+username = "";
+while(username==="" || username===null){//if param is true, enter the loop and exit only when it's false
+    username = window.prompt("input something here");
+}
+do{//first do this,
+    console.log("you again?");//notice this is displayed, even if the conditions match with the following while param
+    if(username!=="" || username!==null){
+        break;//exits the loop
+    }
+    username = window.prompt("input something here");//this will not happen, the loop has been broken
+}while(username==="" || username===null)//then, if param is true, enter the loop and exit only when it's false
+console.log("haha");
+window.scrollTo({//this is a options parameter, and gets a options object (very similar to json, may I say) and each attribute is optional as parameter
+    top: document.body.scrollHeight,
+    behavior: "smooth",
+});//I've added this scrollTo() just to not waste time getting to the bottom of the page after the window.prompt()
+//for loop (loops for a limited amount of times defined by an index)
+for(let i = 1; i<20; i++){//for i==0: while i<3: do this, then step: i++
+    if(i==13){
+        console.log("skipping 13th hello...");
+        continue;//skips the rest of the iteration to the next one
+    }
+    console.log(i, "Hello");//this
+}
+
+//number guessing game using loop
+const minNum = 1;
+const maxNum = 100;
+const answer = Math.floor(Math.random()*(maxNum-minNum))+minNum
+let attempt = 0;
+let guess;
+let running = true;
+do{
+    attempt++;
+    guess = Number(window.prompt(`Guess a value between ${minNum} and ${maxNum}`));
+    console.log(attempt, guess);
+    if(guess<minNum || guess>maxNum || isNaN(guess))
+        window.alert("please enter a valid number");
+    else{
+        switch(true){
+            case guess<answer :
+                window.alert("TOO LOW, TRY AGAIN!");
+                break;
+            case guess>answer :
+                window.alert("TOO HIGH, TRY AGAIN!");
+                break;
+            default :
+                window.alert(`CORRECT! The answer was ${answer}. It took you ${attempt} attempts, check logs at console!`);
+                running = false;
+        }
+    }
+}while(running)
+
+
