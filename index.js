@@ -448,3 +448,50 @@ fruits.sort();//sorts elements in ascending order
 console.log(fruits);
 fruits.reverse();//reverses array elements
 console.log(fruits);
+//spread operator (...) - expands an array into separate elements (unpacks array elements)
+let numbers = [1, 2, 3, 4, 5];
+console.log(numbers)//this is the array "packed" or "unspread"
+console.log(...numbers);//yes, these 3 dots are the spread operator who "unpacked" or "spread" the array for use
+console.log(Math.max(...numbers));
+console.log(Math.min(...numbers));
+console.log([..."Bro Code"].join('-'));//you can use it to form other arrays and how they're displayed
+let newFruits = [...fruits];//this is a shallow copy: different data structures (in this case, arrays) with identical values
+console.log(newFruits);
+let vegetables = ["carrots", "broccoli", "potatoes"];
+let foods = [...newFruits, ...vegetables, "eggs", "milk"];//combine and expand on arrays
+console.log(foods);
+//rest parameters (...rest) - bundles separate elements (function data values) into an array (quite the opposite of spread operators, but as parameters)
+function openFridge(...foods){//yes those 3 dots in the parameter are the rest parameters, they will bundle all data values into an array
+    console.log(foods);
+}
+function getFood(...foods){
+    return foods;
+}
+const food1 = "pizza";
+const food2 = "burger";
+const food3 = "hotdog";
+const food4 = "sushi";
+const food5 = "ramen";
+openFridge(food1, food2, food3, food5);
+foods = getFood(food1, food2, food3, food4, food5);
+console.log(foods);
+function sum(...numbers){
+    let result = 0;
+    for(let number of numbers){
+        result += number;
+    }
+    return result;
+}
+console.log(`The total is ${sum(1, 2, 3, 4, 5)}`);
+function avg(...numbers){
+    let result = 0;
+    for(let number of numbers){
+        result += number;
+    }
+    return result / numbers.length;
+}
+console.log(`The average is ${avg(75, 100, 85, 90, 50)}`);
+function combineStrings(...strings){
+    return strings.join(" ");
+}
+console.log(combineStrings("Mr.", "Spongebob", "Squarepants", "III"));
