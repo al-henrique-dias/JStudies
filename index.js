@@ -134,6 +134,7 @@ ageSubmit.onclick = () => {
         console.log("WHAT A BABY");
     }
 }
+
 //verify checked state of HTML checkbox or radio button
 const happyChecker = document.getElementById("happyChecker");
 const happyBtn = document.getElementById("happyBtn");
@@ -217,3 +218,26 @@ switch(true){//here it verifies if the case condition matches to the scope logic
 }
 console.log(letterGrade);
 
+//String methods (text manipulation)
+username = "BroCode  ";
+console.log(username);
+console.log(username.charAt(1));//get character at index
+console.log(username.indexOf('o'));//get index of first character occurence
+console.log(username.lastIndexOf('o'));//get index of last character occurence
+console.log(username.length);//get string lenght of characters
+console.log(username.trim());//removes initial or final whitespaces
+console.log(username.toUpperCase());//makes all of the characters uppercase (capital letters)
+console.log(username.toLowerCase());//makes all of the characters lowercase
+console.log(username.repeat(3));//repeats the String content
+console.log(username.startsWith(' '));//verifies if it starts with that character (returns boolean)
+console.log(username.endsWith(' '));//verifies if it ends with that character (returns boolean)
+console.log(username.replace('o', 'a'));//replaces the first String occurence with the second parameter
+console.log(username.replaceAll('o', "uh"));//replaces all of the Strings occurence with the second parameter
+console.log(username.padStart(15, 'AAAAAA'));//pads the String start with the given String, 'till it reaches the specified size (if the padding exceeds the specified size, it is trimmed, but the given string is not)
+console.log(username.padEnd(15, 'AAAAAA'));//pads the String end with the given String, 'till it reaches the specified size (if the padding exceeds the specified size, it is trimmed, but the given string is not)
+console.log(`${username.slice(0, 3)}\n${username.slice(3)}`);//String slicing (creates substring from a portion of another String)
+
+//method chaining (calling methods in one continuous line of code)(applying methods to results of methods)
+username = " BroCodE  ";
+username = username.trim().charAt(0).toUpperCase() + username.trim().slice(1).toLocaleLowerCase();
+console.log(username);
