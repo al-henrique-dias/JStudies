@@ -52,3 +52,14 @@ let z;
 z = Boolean(z);//returns true: it has content or it's true, false: has no content or it's false
 console.log(z, typeof z);
 
+//constants
+const PI = 3.14159;//we usually capitalize primitive datatypes consts
+let r, c;//radius and circumference
+//r = Number(window.prompt("Enter circle radius:"));//we must do this conversion, window prompts return Strings (as a lot of user input methods)
+//c = 2*PI*r; console.log(c);
+document.getElementById("submitRadius").onclick = () => {//nameless functions can be used with => (they are called arrow functions, more later)
+    r = document.getElementById("radius").value;
+    c = 2*PI*r;
+    document.getElementById("circumference").textContent = `This circle circumference is ${c}\n`;
+}
+
