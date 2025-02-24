@@ -34,7 +34,7 @@ document.getElementById("ex3").textContent = `Online: ${online}`;
 //user input (browser prompts and page elements)
 let username;
 //username = window.prompt("What's your username?"); console.log(username);//goes over page, like alert. window prompts also always return Strings.
-document.getElementById("submitUser").onclick = function(){//functions can return their content as events, no return reserved word needed (also, this function is nameless, function is a reserved word)
+document.getElementById("submitUser").onclick = function(){//functions can return their content as events, no "return" reserved keyword needed (also, this function is nameless, function is a reserved keyword)
     //onclick is an element event that fires when the element is clicked upon (mouse left)
     username = document.getElementById("username").value;//value is the element's content
     console.log(`new user detected: ${username}`);
@@ -719,19 +719,19 @@ setTimeout(function(){//you can use a function as a argument for a parameter
 //const numbers = [1, 2, 3, 4, 5, 6];//already declared
 numbers.pop();
 console.log(numbers);
-console.log(numbers.map(function(element){//you also don't need to name the function
+console.log(numbers.map(function (element){//you also don't need to name the function
     return Math.pow(element, 2);//squared
 }));
-console.log(numbers.map(function(element){
+console.log(numbers.map(function (element){
     return Math.pow(element, 3);//cubed
 }));
-console.log(numbers.filter(function(element){
+console.log(numbers.filter(function (element){
     return element % 2 === 0;//even numbers
 }));
-console.log(numbers.filter(function(element){
+console.log(numbers.filter(function (element){
     return element % 2 !== 0;//odd numbers
 }));
-console.log(numbers.reduce(function(accumulator, next){
+console.log(numbers.reduce(function (accumulator, next){
     return accumulator + next;//total sum
 }));
 //arrow functions are a concise way to write function expressions that you use oly once
@@ -742,10 +742,75 @@ const salutations = (name, age) => {
 }
 heyThere("Bro");
 salutations("bro", 21);
-setTimeout(() => console.log("have you forgot me? ;-;"), 4000);
+setTimeout(() => console.log("have you forgot me? ;-;"), 5000);
 console.log(numbers.map((element) => Math.pow(element, 2)));//squared
-//notice that you haven't used the return reserved word here
+//notice that you haven't used the "return" reserved keyword here
 console.log(numbers.map((element) => Math.pow(element, 3)));//cubed
 console.log(numbers.filter((element) => element % 2 === 0));//even numbers
 console.log(numbers.filter((element) => element % 2 !== 0));//odd numbers
 console.log(numbers.reduce((accumulator, next) => accumulator + next));//total sum
+
+/**
+ * object - collection of related properties and/or methods
+ * they can represent real world objects (people, products, places, anything)
+ * structure:
+ *  object = {
+ *      key: velue,
+ *      function()
+ *  }
+ */
+const person1 = {
+    firstName: "Spongebob",
+    lastName: "Squarepants",
+    age: 30,
+    isEmployed: true,
+    sayHello: () => console.log("Hi! I'm Spongebob!"),
+    eat: () => console.log("I'm eating a Krabby Patty"),
+}
+const person2 = {
+    firstName: "Patrick",
+    lastName: "Star",
+    age: 42,
+    isEmployed: false,
+    sayHello: () => console.log("No, this is Patrick!"),
+    eat: () => console.log("I'm eating garbage!"),
+}
+console.log(person1.firstName);
+console.log(person1.lastName);
+console.log(person1.age);
+console.log(person1.isEmployed);
+person1.sayHello();
+person1.eat();
+console.log(person2.firstName);
+console.log(person2.lastName);
+console.log(person2.age);
+console.log(person2.isEmployed);
+person2.sayHello();
+person2.eat();
+//this (reserved keyword) - reference to the object where "this" is used (the object depends on the immediate context)
+const person = {
+    name: "Spongebob",
+    favFood: "burger",
+    sayHello: function (){console.log(`Hi! I am ${this.name}`);},//"this" cannot be used on arrow functions
+    eat: function (){console.log(`${this.name} is eating ${this.favFood}`);},//this is at the object context
+} 
+console.log(this);//this displays the window object (all of it's properties), because it's the context "this" is inserted
+person.sayHello();
+person.eat();
+//constructors - special method for defining the porperties and methods of objects
+function Car(make, model, year, color){//pay attention to capitalization
+    this.make = make;
+    this.model = model;
+    this.year = year;
+    this.color = color;
+    this.drive = function(){console.log(`YOu drive the ${this.model}`)};
+}//this function generates an object when using the reserved keyword "new"
+const car1 = new Car("Ford", "Mustang", 2023, "red");
+const car2 = new Car("Chevrolet", "Camaro", 2025, "blue");
+const car3 = new Car("Dodge", "Charger", 2024, "silver");
+console.log(car1);
+console.log(car2);
+console.log(car3);
+car1.drive();
+car2.drive();
+car3.drive();
