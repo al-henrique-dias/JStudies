@@ -1,4 +1,4 @@
-//console.log(`Hello world\nI like pizza`);//displays something at console
+console.log(`Hello world\nI like pizza`);//displays something at console
 //window.alert(`This is an alert\nI like pizza!`);//displays something at the user screen through browser (over everything)
 
 /**
@@ -34,7 +34,7 @@ document.getElementById("ex3").textContent = `Online: ${online}`;
 //user input (browser prompts and page elements)
 let username;
 //username = window.prompt("What's your username?"); console.log(username);//goes over page, like alert. window prompts also always return Strings.
-document.getElementById("submitUser").onclick = function(){//functions can return their content as events, no return keyword needed (also, this function is nameless, function is a keyword)
+document.getElementById("submitUser").onclick = function(){//functions can return their content as events, no return reserved word needed (also, this function is nameless, function is a reserved word)
     //onclick is an element event that fires when the element is clicked upon (mouse left)
     username = document.getElementById("username").value;//value is the element's content
     console.log(`new user detected: ${username}`);
@@ -651,7 +651,7 @@ const brazilDates = dates.map(formatDates);
 console.log(brazilDates);
 
 //.filter() - returns the elements of an array that meet the condition specified in a callback function (creates a new array by filtering out elements)
-//const numbers = [2, 4, 6, 8, 10];//already declared
+//const numbers = [1, 2, 3, 4, 5];//already declared
 console.log(numbers, numbers.push(6, 7));
 function isEven(element){
     return element % 2 === 0;//returns a boolean, it is the filtering condition (true ? return : don't return)
@@ -707,3 +707,45 @@ function getMin(accumulator, next){
 }
 console.log(grades.reduce(getMax));
 console.log(grades.reduce(getMin));
+
+//function expressions - define functions as values or variables
+const hi = function(){//you can define a function as a variable
+    console.log("hi");
+}
+hi();//and then call it
+setTimeout(function(){//you can use a function as a argument for a parameter
+    console.log("is anyone there?");
+}, 3000);//btw, this is setTimeout, a function that waits the specified amount of time (ms) to then call a callback fn
+//const numbers = [1, 2, 3, 4, 5, 6];//already declared
+numbers.pop();
+console.log(numbers);
+console.log(numbers.map(function(element){//you also don't need to name the function
+    return Math.pow(element, 2);//squared
+}));
+console.log(numbers.map(function(element){
+    return Math.pow(element, 3);//cubed
+}));
+console.log(numbers.filter(function(element){
+    return element % 2 === 0;//even numbers
+}));
+console.log(numbers.filter(function(element){
+    return element % 2 !== 0;//odd numbers
+}));
+console.log(numbers.reduce(function(accumulator, next){
+    return accumulator + next;//total sum
+}));
+//arrow functions are a concise way to write function expressions that you use oly once
+const heyThere = (name) => console.log(`Hey there, ${name}`);//you don't need brackets for just one line of code (like some other statements)
+const salutations = (name, age) => {
+    console.log(`Salutations ${name}!`);
+    console.log(`You are ${age} years old`);
+}
+heyThere("Bro");
+salutations("bro", 21);
+setTimeout(() => console.log("have you forgot me? ;-;"), 4000);
+console.log(numbers.map((element) => Math.pow(element, 2)));//squared
+//notice that you haven't used the return reserved word here
+console.log(numbers.map((element) => Math.pow(element, 3)));//cubed
+console.log(numbers.filter((element) => element % 2 === 0));//even numbers
+console.log(numbers.filter((element) => element % 2 !== 0));//odd numbers
+console.log(numbers.reduce((accumulator, next) => accumulator + next));//total sum
