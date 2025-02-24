@@ -418,7 +418,7 @@ function convert(){
 }
 
 //arrays (work like array lists here)
-let fruits = ["apple", "orange", "banana"];
+const fruits = ["apple", "orange", "banana"];
 //displaying array
 console.log(fruits);//all items (displayed as an object)
 console.log(fruits[0]);//first index starts on 0
@@ -449,7 +449,7 @@ console.log(fruits);
 fruits.reverse();//reverses array elements
 console.log(fruits);
 //spread operator (...) - expands an array into separate elements (unpacks array elements)
-let numbers = [1, 2, 3, 4, 5];
+const numbers = [1, 2, 3, 4, 5];
 console.log(numbers)//this is the array "packed" or "unspread"
 console.log(...numbers);//yes, these 3 dots are the spread operator who "unpacked" or "spread" the array for use
 console.log(Math.max(...numbers));
@@ -576,3 +576,134 @@ function displayPage(result){
     document.getElementById("myTitle").textContent = result;
 }
 soma(displayPage, 1, 2);
+
+//.forEach() - method used to iterate over the elements of an array and apply a specified callback function to each element
+//const numbers = [1, 2, 3, 4, 5];//already declared
+console.log('');//blank space for conveniesce
+function display(element){
+    console.log(element);
+}
+numbers.forEach(display);//forEach() returns nothing, it just performs an action for each element of an array
+function doubleE(element, index, array){
+    array[index] = element * 2;
+}
+function singleE(element, index, array){
+    array[index] = element / 2;
+}
+numbers.forEach(doubleE);//this uses a callback where element, index and array are provided as parameters: forEach(callback: (element, index, array))
+numbers.forEach(display);//notice that it changes the array elements
+numbers.forEach(singleE);
+numbers.forEach(display);
+
+//const fruits = [orange, banana, apple];//alerady declared
+fruits.forEach(display);
+function upperCase(element, index, array){
+    array[index] = element.toUpperCase();
+}
+function lowerCase(element, index, array){
+    array[index] = element.toLowerCase();
+}
+function capitalize(element, index, array){
+    array[index] = element.charAt(0).toUpperCase() + element.slice(1);
+}
+fruits.forEach(upperCase);
+fruits.forEach(display);
+fruits.forEach(lowerCase);
+fruits.forEach(display);
+fruits.forEach(capitalize);
+fruits.forEach(display);
+
+/**
+ * .map() - method used to iterate over the elements of an array and apply a specified callback function to each element,
+ * then returs a new array!
+*/
+//const numbers = [2, 4, 6, 8, 10];//already declared
+console.log(`numbers\n${numbers}`);
+function square(element){
+    return Math.pow(element, 2);//we use return here so the map function can also return the new array
+}
+function cube(element){
+    return Math.pow(element, 3);
+}
+const squares = numbers.map(square);//returns new array
+console.log(`squares\n${squares}`);
+const cubes = numbers.map(cube);
+console.log(`cubes\n${cubes}`);
+
+const students = ["Spongebob", "Patrick", "Squidward", "Sandy"];
+function upperCaseR(element){
+    return element.toUpperCase();
+}
+function lowerCaseR(element){
+    return element.toLowerCase();
+}
+console.log(students);
+console.log(students.map(upperCaseR));
+console.log(students.map(lowerCaseR));
+
+const dates = ["2024-1-10", "2025-2-24", "2026-3-30"];
+console.log(dates);
+function formatDates(element){
+    const parts = element.split('-');
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
+const brazilDates = dates.map(formatDates);
+console.log(brazilDates);
+
+//.filter() - returns the elements of an array that meet the condition specified in a callback function (creates a new array by filtering out elements)
+//const numbers = [2, 4, 6, 8, 10];//already declared
+console.log(numbers, numbers.push(6, 7));
+function isEven(element){
+    return element % 2 === 0;//returns a boolean, it is the filtering condition (true ? return : don't return)
+}
+function isOdd(element){
+    return element % 2 !== 0;
+}
+const evenNums = numbers.filter(isEven);//if the elements of the array meet the filter callback function condition (true), they are return as elements to a new array
+console.log(evenNums);
+const oddNums = numbers.filter(isOdd);
+console.log(oddNums);
+
+const ages = [15, 17, 18, 18, 19, 20, 60];
+console.log(ages);
+function isAdult(element){
+    return element >= 18;
+}
+function isKid(element){
+    return element < 18;
+}
+console.log(ages.filter(isAdult));
+console.log(ages.filter(isKid));
+
+const words = ["apple", "orange", "banana", "kiwi", "pomegranate", "coconut"];
+function getShortWords(element){
+    return element.length <= 6;
+}
+function getLongWords(element){
+    return element.length > 6;
+
+}
+console.log(words.filter(getShortWords));
+console.log(words.filter(getLongWords));
+
+/** 
+ * .reduce() - reduce the elements of an array to a single value
+ * Calls the specified callback function for all the elements in an array
+ * The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
+ */
+const prices = [5, 30, 10, 25, 15, 20];
+function sum(previous, next){//the iterations are based on the accumulation of the returned values of this callback into the 'previous' parameter  
+    return previous + next;
+}
+const total = prices.reduce(sum);
+console.log(`R$${total.toFixed(2)}`);
+
+const grades = [75, 50, 90, 80, 65, 95];
+function getMax(accumulator, element){//for better explaining, all the accumulation gets into the 'accumulator' parameter (previously called 'previous')
+    return Math.max(accumulator, element);//the function will do what it must and it's returned value will be stored at reduce and pass it as 'accumulator' in the next iteration
+}
+function getMin(accumulator, next){
+    return Math.min(accumulator, next);
+}
+console.log(grades.reduce(getMax));
+console.log(grades.reduce(getMin));
