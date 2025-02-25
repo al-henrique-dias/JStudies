@@ -814,3 +814,149 @@ console.log(car3);
 car1.drive();
 car2.drive();
 car3.drive();
+
+/**
+ * class - provides a more structured and cleaner way to work with objectscompared to traditional constructor methods
+ * includes "static" reserved keyword, encapsulation and inheritance (kinda OOP here)
+*/
+class Product{//attention to capitalization
+    constructor(name, price){//for creating the constructor, use the "constructor" reserved keyword
+        this.name = name;
+        this.price = price;
+    }
+
+    displayProduct(){//inside class declaration, you don't need to use the "function" reserved keyword to declare a function
+        console.log(`Product: ${this.name}`);
+        console.log(`Price: ${this.price.toFixed(2)}`);
+    }
+
+    calculateTotal(salesTax){
+        return this.price + (this.price * salesTax);
+    }
+}
+
+const salesTax = 0.05;
+
+const product1 = new Product("shirt", 19.99);
+const product2 = new Product("pants", 22.50);
+const product3 = new Product("underwear", 100.00);
+
+product1.displayProduct();
+console.log(`Total price (with tax): $${product1.calculateTotal(salesTax).toFixed(2)}`);
+product2.displayProduct();
+console.log(`Total price (with tax): $${product2.calculateTotal(salesTax).toFixed(2)}`);
+product3.displayProduct();
+console.log(`Total price (with tax): $${product3.calculateTotal(salesTax).toFixed(2)}`);
+
+/**
+ * static (reserved keyword) - defines properties or methods that belong to a class itself rather than the objects created from that class
+ * (class owns anything static, objects don't)
+*/
+class MathUtil{
+    static PI = 3.14159;
+
+    static getDiameter(radius){
+        return 2 * radius;
+    }
+    static getCircumference(radius){
+        return 2 * (this.PI * radius);
+    }
+    static getArea(radius){
+        return this.PI * (radius ** 2);
+    }
+
+    PI = 4;//does nothing
+}
+
+console.log(MathUtil.PI);//I don't need a object to display this, thants to "static"
+console.log(MathUtil.getDiameter(10));
+console.log(MathUtil.getCircumference(10));
+console.log(MathUtil.getArea(10));
+
+class User{
+    
+    static userCount = 0;
+
+    constructor(username){
+        this.username = username;
+        User.userCount++;//the objects can access static class elements through calling the class itself
+    }
+
+    static getUserCount(){
+        console.log(`There are ${User.userCount} users online`)
+    }
+
+    sayHello(){
+        console.log(`Hello, my username is ${this.username}`);
+    }
+}
+
+const user1 = new User("Spongebob");
+const user2 = new User("Patrick");
+const user3 = new User("Sandy");
+
+console.log(user1.username);
+console.log(user2.username);
+console.log(user3.username);
+console.log(user1.userCount, User.userCount);//the object doesn't have access to static class elements, the class has to called
+user1.sayHello();
+user2.sayHello();
+user3.sayHello();
+//User.sayHello();//the class itself also can't operate non-static elements without a object
+//user1.getUserCount();//the same rules applies to methods
+User.getUserCount();
+
+//Inheritance - allows a new class to inherit properties and methods from an existing class (parent>>child)
+class Animal{
+    
+    alive = true;
+
+    constructor(name){
+        this.name = name;
+    }
+
+    eat(){
+        console.log(`This ${this.name} is eating`);
+    }
+    sleep(){
+        console.log(`This ${this.name} is sleeping`);
+    }
+
+}
+class Bird extends Animal{
+    name = this.name === undefined ? "bird" : this.name;
+    fly(){//each child
+        console.log(`This ${this.name} is flying`);
+    }
+}
+class Mammal extends Animal{
+    name = this.name === undefined ? "mammal" : this.name;
+    run(){//can have
+        console.log(`This ${this.name} is running`);
+    }
+}
+class Fish extends Animal{
+    name = this.name === undefined ? "fish" : this.name;
+    swim(){//it's unique properties
+        console.log(`This ${this.name} is swimming`);
+    }
+}
+
+const hawk = new Bird("hawk");
+const sloth = new Mammal("sloth");
+const pirarucu = new Fish();
+
+sloth.alive = false;//the child classes have access to all parent class properties
+
+console.log(pirarucu.alive ? `the ${pirarucu.name} is alive` : `the ${pirarucu.name} is dead`);
+pirarucu.eat();
+pirarucu.sleep();
+pirarucu.swim();
+console.log(sloth.alive ? `the ${sloth.name} is alive` : `the ${sloth.name} is dead`);
+sloth.eat();
+sloth.sleep();
+sloth.run();
+console.log(hawk.alive ? `the ${hawk.name} is alive` : `the ${hawk.name} is dead`);
+hawk.eat();
+hawk.sleep();
+hawk.fly();
