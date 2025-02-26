@@ -847,7 +847,6 @@ product2.displayProduct();
 console.log(`Total price (with tax): $${product2.calculateTotal(salesTax).toFixed(2)}`);
 product3.displayProduct();
 console.log(`Total price (with tax): $${product3.calculateTotal(salesTax).toFixed(2)}`);
-
 /**
  * static (reserved keyword) - defines properties or methods that belong to a class itself rather than the objects created from that class
  * (class owns anything static, objects don't)
@@ -905,8 +904,7 @@ user3.sayHello();
 //User.sayHello();//the class itself also can't operate non-static elements without a object
 //user1.getUserCount();//the same rules applies to methods
 User.getUserCount();
-
-//Inheritance - allows a new class to inherit properties and methods from an existing class (parent>>child)
+//Inheritance - allows a new class to inherit properties and methods from an existing class (parent>>child) (a parent class can also be known as superclass)
 class Animal{
     
     alive = true;
@@ -960,3 +958,63 @@ console.log(hawk.alive ? `the ${hawk.name} is alive` : `the ${hawk.name} is dead
 hawk.eat();
 hawk.sleep();
 hawk.fly();
+/**
+ * super (reserved keyword) - used in class objects to call the constructor or acces the properties and methods of a superclass (parent)
+ * "this" - this object
+ * super - the parent
+ */
+class Animalbr{
+    constructor(nome, idade){
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    mover(velocidade){
+        console.log(`Este ${this.nome}, se move na velocidade de ${velocidade}km/h`);
+    }
+}
+class Passaro extends Animalbr{
+    constructor(nome, idade, veloVoo){//this is equivalent to override the parent constructor
+        super(nome, idade);//this is mandatory when creating a contructor for a child class, it calls the constructor of the parent class
+        this.veloVoo = veloVoo;
+    }
+
+    voar(){
+        console.log(`Este ${this.nome} consegue voar`);
+        super.mover(this.veloVoo);//this calls a parent method inside a child method
+    }
+}
+class Mamifero extends Animalbr{
+    constructor(nome, idade, veloCorre){
+        super(nome, idade);
+        this.veloCorre = veloCorre;
+    }
+    
+    mover(velocidade){//this overrides the parent method, becoming priority upon calling
+        console.log(`Este ${this.nome} consegue correr`);
+        super.mover(velocidade);
+    }
+}
+class Peixe extends Animalbr{
+    constructor(nome, idade, veloNado){
+        super(nome, idade);
+        this.veloNado = veloNado;
+    }
+
+    mover(){//this overrides, but does not overloads the parent method, just becomes priority upon calling (if the parent signature is called, the parameters are ignored)
+        console.log(`Este ${this.nome} consegue nadar`);
+        super.mover(this.veloNado);
+    }
+}
+
+const aguia = new Passaro("águia", 2, 50);
+const preguica = new Mamifero("preguiça", 3, 1);
+const pintado = new Peixe("pintado", 1, 11);
+
+console.log(aguia.nome, aguia.idade, aguia.veloVoo);
+aguia.voar();
+console.log(preguica.nome, preguica.idade, preguica.veloCorre);
+preguica.mover(preguica.veloCorre);
+console.log(pintado.nome, pintado.idade, pintado.veloNado);
+pintado.mover();
+pintado.mover(pintado.veloNado);
